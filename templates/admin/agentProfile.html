@@ -1,0 +1,149 @@
+<section data-ng-controller="agentProfileController" data-ng-show="CustomerProfileTemplate.length == 0">
+    <article id="agentDetails">
+        <div class="thumbnail">
+            <div class="caption">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h3>Agent Profile.</h3>
+                    </div>
+                    <div class="span6 alignR">
+                        <button class="btn btn-success" data-ng-click="Model.Back()">Back</button>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <img class="biodata_card_size" data-ng-src="{{Model.AgentDetails.image_url}}">
+                    </div>
+                    <div class="span6">
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <span>Agent Id</span>
+                            </div>
+                            <div class="span6">
+                                <span data-ng-bind="Model.AgentDetails.id"></span>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <span>Name</span>
+                            </div>
+                            <div class="span6">
+                                <span data-ng-bind="Model.AgentDetails.name"></span>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <span>Contact Number</span>
+                            </div>
+                            <div class="span6">
+                                <span data-ng-bind="Model.AgentDetails.contact_number"></span>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <span>Address</span>
+                            </div>
+                            <div class="span6">
+                                <span data-ng-bind="Model.AgentDetails.address"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article id="transactionSummary">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3>Collection Summary</h3>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <span>No. Of Customers</span>
+                    </div>
+                    <div class="span3">
+                        <span>Total Installment Amount</span>
+                    </div>
+                    <div class="span3">
+                        <span>Total Amount Collected</span>
+                    </div>
+                    <div class="span3">
+                        <span>Total Due Amount</span>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <span data-ng-bind="Model.Customers.length"></span>
+                    </div>
+                    <div class="span3">
+                        <span data-ng-bind="Model.Summary.total_installment_amount | currency:'₹'"></span>
+                    </div>
+                    <div class="span3">
+                        <span data-ng-bind="Model.Summary.total_paid_amount | currency:'₹'"></span>
+                    </div>
+                    <div class="span3">
+                        <span data-ng-bind="Model.Summary.total_due_amount | currency:'₹'"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article id="customerDetails" data-ng-show="Model.Customers.length != 0" style="  background: #F3F2F2;">
+        <h3>Customer Details.</h3>
+        <div data-scroll-bar="1500">
+            <ul class="thumbnails" >
+                <li style="width: 290px" data-ng-repeat="customer in Model.Customers | filter:Model.filter" class="grid-view-alignment">
+                    <div class="thumbnail">
+                        <img class="card_size" data-ng-src="{{customer.image_url}}" alt="">
+                        <div class="caption customer_card" data-ng-click="Model.ShowCustomerProfile(customer)">
+                            <div class="row-fluid">
+                                <div class="span7">
+                                    <span>Membership No.</span>
+                                </div>
+                                <div class="span5">
+                                    <span class="margin-top-0" data-ng-bind="customer.id"></span>
+                                </div>
+                            </div>
+
+                            <div class="row-fluid">
+                                <div class="span7">
+                                    <span>Name</span>
+                                </div>
+                                <div class="span5">
+                                    <span data-ng-bind="customer.name"></span>
+                                </div>
+                            </div>
+
+                            <div class="row-fluid">
+                                <div class="span7">
+                                    <span>Contact Numbers</span>
+                                </div>
+                                <div class="span5">
+                                    <span data-ng-bind="customer.contact_number"></span>
+                                </div>
+                            </div>
+
+                            <div class="row-fluid">
+                                <div class="span7">
+                                    <span>Address</span>
+                                </div>
+                                <div class="span5">
+                                    <span data-ng-bind="customer.address"></span>
+                                </div>
+                            </div>
+                            <br class="clr">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </article>
+
+</section>
+
+<section id="customerProfile" style="background-color: #ffffff">
+    <div data-ng-include="CustomerProfileTemplate"></div>
+</section>

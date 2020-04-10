@@ -1,0 +1,44 @@
+<section data-scroll-bar="350">
+	<form name="CollectionsForm" class="form-content">
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Select Customer<span class="required">*</span></label>
+			</div>
+			<div class="span4">
+				<select data-ng-change="Model.cc()" data-ng-options="customer.id as customer.name for customer in Model.CustomerList" name="customer_id" required=""  data-ng-model="Model.Collection.customer_id">	
+			</select>				
+			<div class="error-messages" data-ng-show="Model.Collection.customer_id == 0 && CollectionsForm.customer_id.$dirty" data-ng-bind="commonMediater.SelectCustomerErrorMessage"></div>
+			</div>
+		</div>	
+		
+	
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Receipt Number<span data-ng-show="parseFloat(Model.Collection.paid_amount)!= 0" class="required">*</span></label>
+			</div>
+			<div class="span3">
+				<input type="text" class="span12" data-ng-model="Model.Collection.receipt_number" data-ng-required="parseFloat(Model.Collection.paid_amount)!= 0" placeholder="Enter Receipt number"  name="receipt_number" />
+				<div class="error-messages" data-ng-show="CollectionsForm.receipt_number.$error.required && CollectionsForm.receipt_number.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>			
+			</div>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Collected Amount<span class="required">*</span></label>
+			</div>
+			<div class="span3">
+				<input type="text" class="span12" placeholder="Enter collected amount" data-ng-model="Model.Collection.paid_amount" data-ng-pattern="commonMediater.NumberPattern" required="" name="paid_amount" />
+				<div class="error-messages" data-ng-show="CollectionsForm.paid_amount.$error.required && CollectionsForm.paid_amount.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="CollectionsForm.paid_amount.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+			</div>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="offset4 span4 float-right margin-left-340">
+				<button class="btn btn-warning" data-ng-click="Model.SaveCollection()" data-ng-disabled="Model.Collection.customer_id == 0 || CollectionsForm.$invalid">Save Collection</button>
+				<button class="btn btn-normal" data-ng-click="Model.Clear()">Clear</button>
+			</div>			
+		</div>
+		
+	</form>
+</section>

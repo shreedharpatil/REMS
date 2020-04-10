@@ -1,0 +1,75 @@
+﻿<div class="">
+  <div class="">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white !important;background-color:darkgoldenrod">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" data-ng-bind="Model.Title"></h4>
+      </div>
+      <div class="modal-body" style="color:black !important">
+	  <form name="agentCustEditForm">
+	  
+       <div class="row-fluid">	
+ <div class="span6">
+<img data-ng-src="{{Model.Customer.image_url}}" class="img-responsive img-circle" alt="" />
+</div>		   
+	   <div class="span5">
+	   <div class="row-fluid">
+	   <div class="span5">
+	   <label  class="bold">Membership No.<span class="required">*</span></label>
+	   </div>
+	   <div class="span4">
+	   <input type="text" data-ng-model = "Model.Customer.id" disabled="disabled" required="" />	   
+	   </div>
+	   </div>
+	   
+	    <div class="row-fluid">
+	   <div class="span5">
+	   <label class="bold">Name<span class="required">*</span></label>
+	   </div>
+	   <div class="span4">
+	   <input type="text" data-ng-model = "Model.Customer.name" name="Name" required="" data-ng-pattern="commonMediater.CharacterPattern" />	   
+	   <div class="error-messages" data-ng-show="agentCustEditForm.Name.$error.required && agentCustEditForm.Name.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="agentCustEditForm.Name.$error.pattern" class="error-messages" data-ng-bind="commonMediater.CharacterPatternErrorMessage" ></div>
+	   </div>
+	   </div>
+	   
+	    <div class="row-fluid">
+	   <div class="span5">
+	   <label class="bold">Contact No.<span class="required">*</span></label>
+	   </div>
+	   <div class="span4">
+	   <input type="text" data-ng-model = "Model.Customer.contact_number" required="" name="Contactnumber" data-ng-pattern="commonMediater.ContactNumberPattern"/>
+	   <div class="error-messages" data-ng-show="agentCustEditForm.Contactnumber.$error.required && agentCustEditForm.Contactnumber.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="agentCustEditForm.Contactnumber.$error.pattern" class="error-messages" data-ng-bind="commonMediater.ContactNumberPatternErrorMessage"></div>
+	   </div>
+	   </div>
+	   
+	    <div class="row-fluid">
+	   <div class="span5">
+	   <label class="bold">Address<span class="required">*</span></label>
+	   </div>
+	   <div class="span4">
+	   <textarea rows="4" data-ng-model = "Model.Customer.address" required="" name="Address" ></textarea>
+	   	   <div class="error-messages" data-ng-show="agentCustEditForm.Address.$error.required && agentCustEditForm.Address.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+	   </div>
+	   </div>
+	   
+	    <div class="row-fluid">
+		<div class="span5">
+			<label  class="bold">Change photo</label>
+	</div>
+	<div class="span4">
+	<input type="file"  multiple onchange="angular.element(this).scope().Model.filesChanged(this)" />
+	</div>
+	</div>
+	   </div>
+	   </div>
+      </form>
+	  </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-ng-click="cancel()" data-dismiss="modal">Close</button>-->
+        <button type="button" class="btn btn-warning" data-ng-click="Model.Update()" data-ng-disabled="agentCustEditForm.$invalid">Update</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

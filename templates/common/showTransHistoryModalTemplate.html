@@ -1,0 +1,87 @@
+<div class="">
+  <div class="">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white !important;background-color:darkgoldenrod">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" data-ng-bind="Title"></h4>
+      </div>
+      <div class="modal-body" style="color:black !important">
+	   <h3> Transaction History Summary </h3>
+			<section class="form-content margin-top-15">
+				<table class="table">
+					<tr>						
+						<th class="orange">Number of Installments</th>
+						<th class="orange">Total Paid Amount</th>
+						<th class="orange">Total Due Amount</th>
+						<th class="orange">Total Installment Amount.</th>					
+					</tr>
+					<tr>
+						<td data-ng-bind="Model.TotalInstallments"></td>
+						<td data-ng-bind="Model.TotalPaidAmount | currency:'&#8377;'"></td>
+						<td data-ng-bind="Model.TotalDueAmount | currency:'&#8377;'"></td>
+						<td data-ng-bind="Model.TotalInstallmentAmount | currency:'&#8377;'"></td>					
+					</tr>
+				</table>
+			</section>
+		<h3> Transaction History Details </h3>
+	  <section>
+		<div class="row-fluid">
+			<div  class="span2">
+				<label class="bold">Membership No.</label>
+			</div>
+			<div  class="span1">
+				<span data-ng-bind="Model.TransHistory[0].customer_id"></span>
+			</div>
+			<div  class="span2">
+				<label class="bold">Member Name</label>
+			</div>
+			<div  class="span2">
+				<span data-ng-bind="Model.TransHistory[0].name"></span>
+			</div>
+			<div class="span5">					
+					<span class="float-right bold"><span class="label label-danger red-background">UP</span> UnPaid</span>					
+					<span class="float-right bold"><span class="label label-warning ">PP</span> Partial Paid,</span>
+					<span class="float-right bold"><span class="label label-success ">FP</span> Full Paid,</span>					
+				</div>
+		</div>
+	  </section>
+	 
+		<section class="form-content">
+				<table class="table">
+					<tr>
+						<!-- <th class="orange">Membership No.</th>
+						<th class="orange">Member Name</th> -->
+						<th class="orange">Installment No.</th>
+						<th class="orange">Paid Amt.</th>
+						<th class="orange">Due Amt.</th>
+						<th class="orange">Installment Amt.</th>
+						<th class="orange">Paid Date</th>
+						<th class="orange">Agent Id</th>
+						<th class="orange">Status</th>
+					</tr>
+					</table>
+			<section data-scroll-bar="250">
+					<table class="table" >
+					<tr data-ng-repeat="trans in Model.TransHistory | filter:Model.filter">
+						<!-- <td data-ng-bind="trans.customer_id"></td>
+						<td data-ng-bind="trans.name"></td> -->
+						<td data-ng-bind="trans.installment_number"></td>
+						<td data-ng-bind="trans.paid_amount | currency:'&#8377;'"></td>
+						<td data-ng-bind="trans.due_amount | currency:'&#8377;'"></td>
+						<td data-ng-bind="trans.total_installment_amount | currency:'&#8377;'"></td>
+						<td data-ng-bind="trans.paid_date | date:'dd/MMM/yyyy'"></td>
+						<td data-ng-bind="trans.agent_id"></td>
+						<td><span data-ng-init="Model.GetStatusClass(trans)" class="margin-top-0" data-ng-class="trans.statusclass" data-ng-bind="trans.payment_status_flag"></span></td>
+					</tr>
+				</table>
+			</section>
+			</section>
+      </div>
+      <div class="modal-footer">
+        <a  class="btn btn-warning" data-ng-show="!Model.showDownloadLink" data-ng-click="Model.generatePdf()">Generate PDF</a>
+		  <a href="/reports/downloadPdf/{{Model.downloadLink}}" data-ng-show="Model.showDownloadLink" class="btn btn-warning">Download</a>
+        <button type="button"  class="btn btn-default" data-ng-click="save()">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

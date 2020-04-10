@@ -1,0 +1,91 @@
+<section>
+<h3>Customer Registration </h3>
+<form name="CustRegForm" class="form-content">
+	<div class="row-fluid">
+	<div class="span3">
+			<label  class="bold">Membership No.<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input class="span12" placeholder="Enter membership number" type="text" data-ng-model="Model.Customer.id" required="" name="MembershipNo"  data-ng-blur="Model.ValidateMembershipNumber()" data-ng-pattern="commonMediater.NumberPattern" />
+			 <div class="error-messages" data-ng-show="CustRegForm.MembershipNo.$error.required && CustRegForm.MembershipNo.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="CustRegForm.MembershipNo.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+		<div class="span1 align-ok-symbol">
+			<span data-ng-show="CustRegForm.MembershipNo.$valid && !Model.IsMembershipNumberExists"><i class="icon-ok green"></i></span>
+			<span data-ng-show="CustRegForm.MembershipNo.$dirty && CustRegForm.MembershipNo.$invalid"><i class="icon-remove"></i></span>
+		</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Name.<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text"  placeholder="Enter member name" class="span12" data-ng-model="Model.Customer.name" name="Name" required  data-ng-pattern="commonMediater.CharacterPattern" />
+			 <div class="error-messages" data-ng-show="CustRegForm.Name.$error.required && CustRegForm.Name.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="CustRegForm.Name.$error.pattern" class="error-messages" data-ng-bind="commonMediater.CharacterPatternErrorMessage" ></div>
+		</div>
+	<div class="span1 align-ok-symbol">
+		<span data-ng-show="CustRegForm.Name.$valid"><i class="icon-ok green"></i></span>
+		<span data-ng-show="CustRegForm.Name.$dirty && CustRegForm.Name.$invalid"><i class="icon-remove"></i></span>
+	</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Contact No.<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text"  placeholder="Enter contact number" class="span12" name="Contactnumber" data-ng-model="Model.Customer.contact_number" required="" data-ng-pattern="commonMediater.ContactNumberPattern" />
+			<div class="error-messages" data-ng-show="CustRegForm.Contactnumber.$error.required && CustRegForm.Contactnumber.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="CustRegForm.Contactnumber.$error.pattern" class="error-messages" data-ng-bind="commonMediater.ContactNumberPatternErrorMessage" ></div>
+		</div>
+	<div class="span1 align-ok-symbol">
+		<span data-ng-show="CustRegForm.Contactnumber.$valid"><i class="icon-ok green"></i></span>
+		<span data-ng-show="CustRegForm.Contactnumber.$dirty && CustRegForm.Contactnumber.$invalid"><i class="icon-remove"></i></span>
+	</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Address<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+		<textarea rows="4"  placeholder="Enter member address" class="span12 margin-left-6" name="Address" data-ng-model="Model.Customer.address" required />
+		<div class="error-messages" data-ng-show="CustRegForm.Address.$error.required && CustRegForm.Address.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			</div>
+	<div class="span1 align-ok-symbol">
+		<span data-ng-show="CustRegForm.Address.$valid"><i class="icon-ok green"></i></span>
+		<span data-ng-show="CustRegForm.Address.$dirty && CustRegForm.Address.$invalid"><i class="icon-remove"></i></span>
+	</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Select agent<span class="required">*</span></label>
+		</div>
+	<div class="span5">
+		<select data-ng-options="agent.id as agent.name for agent in Model.Agents" name="agentselect" required="" data-ng-disabled="!Model.IsAdmin" data-ng-model="Model.Customer.agent_id">	
+		</select>
+	<div class="error-messages" data-ng-show="Model.Customer.agent_id == 0 && CustRegForm.agentselect.$dirty" data-ng-bind="commonMediater.SelectAgentErrorMessage"></div>
+	</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Upload photo</label>
+	</div>
+	<div class="span5">
+	<input type="file" id="file"  multiple onchange="angular.element(this).scope().Model.filesChanged(this)" />
+	<!-- <button data-ng-click="Model.Clear()">upload</button> -->
+	</div>
+	</div>
+	
+      <div class="row-fluid">
+      	<div class="offset3 span4 margin-left-173">      	
+      	<button class="btn btn-normal float-right" data-ng-click = "Model.Clear()"> Clear </button>
+      	<button class="btn btn-warning float-right" data-ng-click = "Model.RegisterCustomer()" data-ng-disabled="CustRegForm.$invalid || Model.IsMembershipNumberExists || Model.Customer.agent_id == 0"> Register </button>
+      </div>
+      </div>
+	  <div class="row-fluid">
+	  <span class="bold">Fields marked with <span class="required">*</span> are mandatory.</span>
+	  </div>
+	  
+	</div>
+	</form>
+</section>

@@ -1,0 +1,24 @@
+{
+  "name": "REMS",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.0.0",
+    "ejs": "*",
+    "express": "*",
+    "express-session": "^1.10.4",
+    "formidable": "*",
+    "mkdirp": "^0.5.0",
+    "morgan": "~1.3.0",
+    "mysql": "*",
+    "pdfmake": "*",
+    "serve-favicon": "~2.1.3",
+    "underscore-node": "*",
+    "winston": "*"
+  }
+}

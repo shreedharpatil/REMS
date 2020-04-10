@@ -1,0 +1,1 @@
+angular.module('Admin',['ngRoute','Common','ui.bootstrap']);

@@ -1,0 +1,166 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Real Estate Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="shreedhar">
+    <!-- Bootstrap styles -->
+    <link href="../../stylesheets/bootstrap.css" rel="stylesheet"/>
+	<link href="../../stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <!-- Customize styles -->
+    <link href="../../stylesheets/font-awesome/css/style.css" rel="stylesheet"/>
+    <!-- font awesome styles -->
+	<link href="../../stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link href="../../stylesheets/datepicker.css" rel="stylesheet"/>
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	<!-- Favicons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+	<script src="../../javascripts/jquery-1.9.1.min.js"></script>
+	<script src="../../javascripts/angular.js"></script>
+	<script src="../../javascripts/angular-route.min.js"></script>
+	<script src="../../javascripts/ui-bootstrap-tpls-0.6.0.js"></script>
+	<script src="../../javascripts/dialogs.min.js"></script>
+	<script src="../../javascripts/underscore.js"></script>
+	<script src="../../javascripts/bootstrap-datetimepicker.min.js"></script>
+	<script src="../../javascripts/bootstrap-datepicker.js"></script>
+	<script src="../../javascripts/common/Common.js"></script>
+	<script src="../../javascripts/common/WarningMessage.js"></script>
+	<script src="../../javascripts/common/CommonModalSample.js"></script>
+	<script src="../../javascripts/common/CommonMediater.js"></script>
+
+	<script src="../../javascripts/agent/agentModule.js"></script>
+	<script src="../../javascripts/agent/agentService.js" type="text/javascript"></script>
+	<script src="../../javascripts/agent/agentController.js"></script>
+	<script src="../../javascripts/agent/agentCustomerDetailsService.js" type="text/javascript"></script>
+	<script src="../../javascripts/agent/agentCustomerDetailsController.js"></script>
+
+	<script src="../../javascripts/agent/EditAgentCustomerDetailsModalController.js" type="text/javascript"></script>
+	<script src="../../javascripts/agent/ShowAgentCustomerDetailsModalController.js" type="text/javascript"></script>
+	<script src="../../javascripts/common/registerCustomerService.js"></script>
+	<script src="../../javascripts/common/registerCustomerController.js"></script>
+	<script src="../../javascripts/agent/CollectionsService.js"></script>
+	<script src="../../javascripts/agent/CollectionsController.js"></script>
+	<script src="../../javascripts/agent/changePasswordService.js"></script>
+	<script src="../../javascripts/agent/changePasswordController.js"></script>
+	<script src="../../javascripts/common/AuditService.js"></script>
+	<script src="../../javascripts/common/AuditController.js"></script>
+
+	<script src="../../javascripts/common/TransHistoryService.js"></script>
+	<script src="../../javascripts/common/TransHistoryController.js"></script>
+
+  <script src="../../javascripts/common/CheckExpiryModalService.js"></script>
+  <script src="../../javascripts/common/CheckExpiryModalController.js"></script>
+  <script src="../../javascripts/agent/AgentHomePageController.js"></script>
+
+  <script src="../../javascripts/agent/BackDatedCollectionsController.js"></script>
+  <script src="../../javascripts/agent/BackDatedCollectionsService.js"></script>
+
+	  <script src="../../javascripts/common/customerBiodataService.js"></script>
+	  <script src="../../javascripts/common/customerBiodataController.js"></script>
+
+	  <script src="../../javascripts/common/LogoutService.js"></script>
+	  <script src="../../javascripts/common/LogoutModalController.js"></script>
+
+
+  </head>
+<body data-ng-app="Agent" data-ng-controller="AgentController">
+	<!-- header  -->
+<!-- <div data-ng-include="'/header'"></div> -->
+<!-- Header section-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="topNav">
+		<div class="container">
+		<h3>Real Estate Management System</h3>
+			<div class="alignR">
+				<img src="../../images/title.jpg"/>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ============================================= -->
+<div class="container">
+<div id="gototop"> </div>
+<header id="header">
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="index.html"><span>Real Estate Management System.</span>
+		<img src="../../assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
+	</div>
+
+</div>
+</header>
+
+<!-- header  -->
+<!-- Menus section starts-->
+<div class="navbar">
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li data-ng-class="{true:'active',false:''}[RootPath=='Home']"><a data-ng-click="Model.TabClick('Home')" href="#"><span><i class="icon-home"></i></span>Home</a></li>
+			   <ul class="nav nav-pills" data-ng-hide="IsAppExpired">
+					<li class="dropdown" data-ng-class="{true:'active',false:''}[RootPath=='Customer']">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span><i class="icon-user"></i></span>Customer <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+				<li ><a  data-ng-click="Model.TabClick('Customer')" href="#/CustomerDetails"><span><i class="icon-eye-open"></i></span>Customer Details</a></li>
+				<li ><a  data-ng-click="Model.TabClick('Customer')" href="#/RegisterCustomer"><span><i class="icon-plus-sign"></i></span>Register Customer</a></li>
+
+				</ul>
+				</li>
+				</ul>
+
+				<ul class="nav nav-pills" data-ng-hide="IsAppExpired">
+					<li class="dropdown" data-ng-class="{true:'active',false:''}[RootPath=='Collections']">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span><i class="icon-user"></i></span>Collections <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li ><a  data-ng-click="Model.TabClick('Collections')" href="#/collection"><span><i class="icon-eye-open"></i></span>Present Collections</a></li>
+							<li ><a  data-ng-click="Model.TabClick('Collections')" href="#/backDatedCollection"><span><i class="icon-plus-sign"></i></span>Back Dated Collections</a></li>
+
+						</ul>
+					</li>
+				</ul>
+
+			  <li data-ng-hide="IsAppExpired" data-ng-class="{true:'active',false:''}[RootPath=='Audit']"><a  data-ng-click="Model.TabClick('Audit')" href="#/audit"><span><i class="icon-check"></i></span>Audit</a></li>
+
+			  <li data-ng-hide="IsAppExpired" data-ng-class="{true:'active',false:''}[RootPath=='changePassword']"><a  data-ng-click="Model.TabClick('changePassword')" href="#/changePassword"><span><i class="icon-edit"></i></span>Change Password</a></li>
+			  <li><a href="" data-ng-click="Model.logout()"><span><i class="icon-share"></i></span>Logout</a></li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	  <div class="alignR"><h4>Welcome, <span data-ng-bind="AgentDetails.name"></span></h4></div>
+	</div>
+<!-- Menus section ends-->
+<div data-ng-view=""></div>
+
+</div>
+
+<!-- footer -->
+<div data-ng-include="'/footer'"></div>
+<!-- footer -->
+
+<!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../javascripts/jquery.js"></script>
+	<script src="../../javascripts/bootstrap.min.js"></script>
+	<script src="../../javascripts/jquery.easing-1.3.min.js"></script>
+    <script src="../../javascripts/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="../../javascripts/shop.js"></script>
+</body>
+</html>

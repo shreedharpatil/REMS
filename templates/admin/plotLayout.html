@@ -1,0 +1,84 @@
+<h3>Initial Plot Layout</h3>
+
+<section>
+<form name="PlotLayoutForm" class="form-content">
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">No. Of Plots<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text" class="span10" placeholder="Enter no. of plots" data-ng-model="Model.Plot.number_of_plots" data-ng-disabled="IsLayoutSetUpReady" name="Plots" required="" data-ng-pattern="commonMediater.NumberPattern" />
+			<div class="error-messages" data-ng-show="PlotLayoutForm.Plots.$error.required && PlotLayoutForm.Plots.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.Plots.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">Total No. Of Installments<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text" class="span10" placeholder="Enter no. of installments" data-ng-model="Model.Plot.number_of_installments" name="Installments" data-ng-disabled="IsLayoutSetUpReady" required=""  data-ng-pattern="commonMediater.NumberPattern" />
+			<div class="error-messages" data-ng-show="PlotLayoutForm.Installments.$error.required && PlotLayoutForm.Installments.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.Installments.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">No. Of Installments Lapsed<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text" class="span10" placeholder="Enter no. of installments lapsed" data-ng-model="Model.Plot.number_of_installments_lapsed" name="InstallmentsLapsed" data-ng-disabled="IsLayoutSetUpReady" required=""  data-ng-pattern="commonMediater.NumberPattern" />
+			<div class="error-messages" data-ng-show="PlotLayoutForm.InstallmentsLapsed.$error.required && PlotLayoutForm.InstallmentsLapsed.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.InstallmentsLapsed.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">Initial Installment Amount<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text"class="span10" placeholder="Enterinitial installment amount"  data-ng-model="Model.Plot.initial_installment_amount" required="" data-ng-disabled="IsLayoutSetUpReady" name="InitialInstallmentAmount" data-ng-pattern="commonMediater.NumberPattern" />
+			<div class="error-messages" data-ng-show="PlotLayoutForm.InitialInstallmentAmount.$error.required && PlotLayoutForm.InitialInstallmentAmount.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.InitialInstallmentAmount.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">Increment Interval<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<select data-ng-model="Model.Plot.increment_interval" class="span10" name="IncrementInterval" data-ng-disabled="IsLayoutSetUpReady" required="">
+				<option value="">--- Please Select ---</option>
+				<option value="0">0</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+			</select>
+			<!--<input type="text" data-ng-model="Model.IncrementInterval" name="IncrementInterval" data-ng-pattern="commonMediater.NumberPattern" /> -->
+			<div class="error-messages" data-ng-show="PlotLayoutForm.IncrementInterval.$error.required && PlotLayoutForm.IncrementInterval.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.IncrementInterval.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span5">
+			<label class="bold">Increment Amount<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text" class="span10" placeholder="Enter increment amount"  data-ng-disabled="IsLayoutSetUpReady" data-ng-model="Model.Plot.increment_amount" name="IncrementAmount" required="" data-ng-pattern="commonMediater.NumberPattern" />
+			<div class="error-messages" data-ng-show="PlotLayoutForm.IncrementAmount.$error.required && PlotLayoutForm.IncrementAmount.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			<div data-ng-show="PlotLayoutForm.IncrementAmount.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="offset5 span3">
+			<button data-ng-click="Model.ConfirmUser()" data-ng-hide="IsLayoutSetUpReady" data-ng-disabled="PlotLayoutForm.$invalid" class="btn btn-warning float-right margin-right-32"> Create Plot Layout </button>
+		</div>		
+	</div>
+</form>
+</section>

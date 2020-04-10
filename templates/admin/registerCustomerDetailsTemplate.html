@@ -1,0 +1,54 @@
+<section>
+<form name="CustRegForm">
+	<div class="row-fluid">
+	<div class="span3">
+			<label  class="bold">Membership No.<span class="required">*</span></label>
+		</div>
+		<div class="span5">
+			<input type="text" data-ng-model="Model.Customer.id" required  data-ng-blur="Model.ValidateMembershipNumber()" />
+		</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Name.<span class="required">*</span></label>
+		</div>
+		<div class="span5">
+			<input type="text" data-ng-model="Model.Customer.name" required  />
+		</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Contact No.<span class="required">*</span></label>
+		</div>
+		<div class="span5">
+			<input type="text" data-ng-model="Model.Customer.contact_number" required />
+		</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label  class="bold">Address<span class="required">*</span></label>
+		</div>
+		<div class="span5">
+		<textarea rows="4" data-ng-model="Model.Customer.address" required />
+		
+			</div>
+</div>
+<div class="row-fluid">
+		<div class="span3">
+			<label>Upload photo</label>
+	</div>
+	<div class="span5">
+	<input type="file"  multiple onchange="angular.element(this).scope().Model.filesChanged(this)" />
+	<button data-ng-click="Model.UploadPhoto()">upload</button>
+	</div>
+	</div>
+	
+      <div class="row-fluid">
+      	<div class="span6">      	
+      	<button class="btn btn-normal float-right" data-ng-click = "Model.Clear()"> Clear </button>
+      	<button class="btn btn-warning float-right" data-ng-click = "Model.RegisterCustomer()" data-ng-enabled="CustRegForm.$valid && !Model.IsMembershipNumberExists"> Register </button>
+      </div>
+      </div>
+	</div>
+	</form>
+</section>

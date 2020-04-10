@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Real Estate Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="shreedhar">
+    <!-- Bootstrap styles -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet"/>
+    <!-- Customize styles -->
+    <link href="stylesheets/font-awesome/css/style.css" rel="stylesheet"/>
+    <!-- font awesome styles -->
+	<link href="stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	<!-- Favicons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+	<script src="javascripts/jquery-1.9.1.min.js"></script>
+	<script src="javascripts/angular.js"></script>
+	<script src="javascripts/angular-route.min.js"></script>
+	<script src="javascripts/home/loginModule.js"></script>
+	<script src="javascripts/home/LoginService.js" type="text/javascript"></script> 
+	<script src="javascripts/home/LoginController.js"></script>
+	
+  </head>
+<body data-ng-app="Login" data-ng-controller="LoginController">
+<!-- 
+	Upper Header Section 
+-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="topNav">
+		<div class="container">
+		<h3>Real Estate Management System</h3>
+			<div class="alignR">				
+				<img src="images/title.jpg"/>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+Lower Header Section 
+-->
+<div class="container">
+<div id="gototop"> </div>
+<header id="header">
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="index.html"><span>Real Estate Management System.</span> 
+		<img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
+	</div>
+	
+</div>
+</header>
+
+<!--
+Navigation Bar Section 
+-->
+<div class="navbar">
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class="active"><a href="index.html">Home	</a></li>
+			  <li class=""><a href="">Contact Us</a></li>
+			</ul>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<div class="dropdown-menu">
+				<form name="loginform" class="form-horizontal loginFrm">
+				  <div class="control-group">
+					<input type="text" class="span2" required="" id="inputEmail" data-ng-model="Model.Login.UserName" placeholder="User name">
+				  </div>
+				  <div class="control-group">
+					<input type="password" class="span2" required="" id="inputPassword"  data-ng-model="Model.Login.Password" placeholder="Password">
+				  </div>
+				  <div class="control-group">
+					<select class="span2" required="" data-ng-model="Model.Login.Type">
+					<option value="">--Please select--</option>
+						<option>Admin</option>
+						<option>Agent</option>
+					</select>					
+				  </div>
+				   <div class="control-group">
+				  <button type="submit" class="shopBtn btn-block" data-ng-click="Model.DoLogin()" data-ng-disabled="loginform.$invalid">Sign in</button>
+				  <div data-ng-hide="Model.Status" style="margin-top: 10px;">
+				  <span class="required bold">Invalid credentials<span>
+				  </div>
+				  </div>
+				</form>
+				</div>
+			</li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	</div>
+<!-- 
+Body Section 
+-->
+	<div class="row">
+<div id="sidebar" class="span3">
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<li><marquee behavior="scroll" style="height:382px" onmouseover="this.stop();" onmouseout="this.start();" direction="up">The Indian real estate sector is one of the most globally recognised sectors. In the country, it is the second largest employer after agriculture and is slated to grow at 30 per cent over the next decade. It comprises four sub sectors - housing, retail, hospitality, and commercial. The growth of this sector is well complemented by the growth of the corporate environment and the demand for office space as well as urban and semi-urban accommodations.
+According to a study by ICRA, the construction industry ranks third among the 14 major sectors in terms of direct, indirect and induced effects in all sectors of the economy.
+It is also expected that this sector will incur more non-resident Indian (NRI) investments in the near future, as a survey by an industry body has revealed a 35 per cent surge in the number of enquiries with property dealers. Bengaluru is expected to be the most favoured property investment destination for NRIs, followed by Ahmedabad, Pune, Chennai, Goa, Delhi and Dehradun.
+Private equity (PE) funding has picked up in the last one year due to attractive valuations. Furthermore, with the Government of India introducing newer policies helpful to real estate, this sector has garnered sufficient growth in recent times.</marquee></li>
+	</ul>
+</div>
+</div>
+	<div class="span9">
+	<div class="well np">
+		<div id="myCarousel" class="carousel slide homCar">
+            <div class="carousel-inner">
+			  <div class="item active">
+                <img style="width:100%" src="images/big-img1.jpg" alt="bootstrap ecommerce templates">              
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img2.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img3.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+			   <div class="item">
+                <img style="width:100%" src="images/big-img4.jpeg" alt="bootstrap ecommerce templates">              
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img5.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img6.jpg" alt="bootstrap ecommerce templates">                
+              </div> 
+			  <div class="item">
+                <img style="width:100%" src="images/big-img7.jpg" alt="bootstrap ecommerce templates">              
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img8.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img9.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+			  <div class="item">
+                <img style="width:100%" src="images/big-img10.jpg" alt="bootstrap ecommerce templates">                
+              </div>
+               </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+        </div>
+	</div>
+	</div>
+
+</div><!-- /container -->
+
+<div class="copyright">
+<div class="container">
+	<p class="pull-right">
+		<a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
+		<a href="#"><img src="assets/img/mc.png" alt="payment"></a>
+		<a href="#"><img src="assets/img/pp.png" alt="payment"></a>
+		<a href="#"><img src="assets/img/visa.png" alt="payment"></a>
+		<a href="#"><img src="assets/img/disc.png" alt="payment"></a>
+	</p>
+	<span>Copyright &copy; 2014<br> Real Estate Management System.</span>
+</div>
+</div>
+<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="javascripts/jquery.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+	<script src="javascripts/jquery.easing-1.3.min.js"></script>
+    <script src="javascripts/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="javascripts/shop.js"></script>
+  </body>
+</html>

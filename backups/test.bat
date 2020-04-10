@@ -1,0 +1,1 @@
+mysqldump -d -h localhost -u root -p rems > dumpfile.sql

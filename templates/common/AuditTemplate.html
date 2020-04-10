@@ -1,0 +1,196 @@
+<section >
+	<form name="AuditForm">
+	<section class="form-content">
+		<div class="row-fluid ">
+			<div class="span2">
+				<label class="bold">Choose a criteria</label>
+			</div>
+			
+			<div class="span3">
+					<select data-ng-options="agent.id as agent.name for agent in Model.Agents" name="agentselect" required="" data-ng-disabled="!Model.IsAdmin" data-ng-model="Model.Audit.agent_id"></select>
+			</div>
+			
+			<div class="span3">
+				 <div id="date" class="input-append"   data-picker-mode="0" data-datetime="" data-ng-model="Model.Audit.TransactionDate" required="">
+				  <input  class=" span10" type="text" data-format="MM,yyyy" id="datepicker" name="datepicker" disabled="disabled" placeholder="Please select a date" />
+				  <span class="add-on" style="margin-top: 6px !important">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+				  </span>
+				  <div class="error-messages" data-ng-show="AuditForm.datepicker.$error.required && AuditForm.datepicker.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+				</div>
+    
+			</div>
+			
+			<div class="span1">
+				<button class="btn btn-warning" data-ng-click="Model.Search()" data-ng-disabled="AuditForm.$invalid">Search</button>
+			</div>
+			<div class="span1">
+				<button class="btn btn-normal" data-ng-click="Model.Clear()">Clear</button>
+			</div>
+			<div class="span2">
+				<input type="text" data-ng-model ="Model.filter" class="span11" placeholder="Filter by any text" />
+			</div>
+		</div>
+	</section>
+		<section style="height: 450px" data-ng-show="Model.TransactionList.length == 0">
+		<section class="form-content margin-top-15" >
+			<span class="bold">No transactions found</span>
+		</section>
+		</section>
+		<section data-ng-show="Model.TransactionList.length != 0">
+			<section>
+					<div class="row-fluid">
+						<div class="span3">
+							<h3> Audit Summary </h3>
+						</div>
+						<div class="span9 alignR margin-top-15">
+							<a href="" data-ng-click='Model.generatePdf()' data-ng-show="!Model.showDownloadLink">Generate PDF</a>
+							<a href="/reports/downloadAuditPdf/{{Model.downloadLink}}"   data-ng-show="Model.showDownloadLink"><i class="icon-download-alt blue"></i>Download</a>
+						</div>
+					</div>
+				</section>
+
+			<article id="transactionSummary">
+				<div class="thumbnail">
+					<div class="caption">
+						<div class="row-fluid">
+							<div class="span2">
+								<span>Month</span>
+							</div>
+							<div class="span2">
+								<span>No. Of Customers</span>
+							</div>
+							<div class="span3">
+								<span>Total Installment Amount</span>
+							</div>
+							<div class="span3">
+								<span>Total Paid Amount</span>
+							</div>
+							<div class="span2">
+								<span>Total Due Amount</span>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span2">
+								<span data-ng-bind="Model.PaidDate.toUpperCase() | date:'MMM-yyyy'"></span>
+							</div>
+							<div class="span2">
+								<span data-ng-bind="Model.TotalCustomers"></span>
+							</div>
+							<div class="span3">
+								<span data-ng-bind="Model.TotalInstallmentAmount | currency:'₹'"></span>
+							</div>
+							<div class="span3">
+								<span data-ng-bind="Model.TotalPaidAmount | currency:'₹'"></span>
+							</div>
+							<div class="span2">
+								<span data-ng-bind="Model.TotalDueAmount | currency:'₹'"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		
+		<section data-ng-show="Model.TransactionList.length != 0 ">	
+			<div class="row-fluid">
+				<div class="span3">
+					<h3> Audit Details </h3>
+				</div>
+				<div class="span9 margin-top-15">					
+					<span class="float-right bold"><span class="label label-danger red-background">UP</span> UnPaid</span>					
+					<span class="float-right bold"><span class="label label-warning ">PP</span> Partial Paid,</span>
+					<span class="float-right bold"><span class="label label-success ">FP</span> Full Paid,</span>
+					<span class="float-right bold"><span class="label label-primary uv-background">TH</span>Trans. History,</span>
+				</div>
+			</div>
+
+		<!-- grid view -->
+			<div style="background-color: #F3F2F2;;" data-scroll-bar="1400">
+			<ul class="thumbnails" >
+				<li style="width: 290px" data-ng-repeat="trans in Model.TransactionList | filter:Model.filter" class="grid-view-alignment">
+					<div class="thumbnail">
+						<div class="caption customer_card">
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Membership No.</span>
+								</div>
+								<div class="span5">
+									<span class="margin-top-0" data-ng-bind="trans.id"></span>
+									<span class="label label-danger uv-background cursor-pointer margin-top-0" data-ng-click="Model.showTransHitstory(trans)">TH</span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Member Name</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.name"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Installment Number</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.installment_number"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Installment Amount</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.total_installment_amount | currency:'&#8377;'"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Paid Amount</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.paid_amount | currency:'&#8377;'"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Due Amount</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.due_amount | currency:'&#8377;'"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Agent Id.</span>
+								</div>
+								<div class="span5">
+									<span data-ng-bind="trans.agent_id"></span>
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="span7">
+									<span>Status</span>
+								</div>
+								<div class="span5">
+									<span data-ng-init="Model.GetStatusClass(trans)" class="margin-top-0" data-ng-class="trans.statusclass" data-ng-bind="trans.payment_status_flag"></span>
+								</div>
+							</div>
+
+							<br class="clr">
+						</div>
+					</div>
+				</li>
+			</ul>
+			</div>
+				<!-- grid view -->
+		</section>	
+</form>
+</section>

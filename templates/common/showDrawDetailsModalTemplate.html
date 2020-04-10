@@ -1,0 +1,38 @@
+<div class="">
+  <div class="">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white !important;background-color:darkgoldenrod">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" data-ng-bind="Title"></h4>
+      </div>
+      <div class="modal-body" style="color:black !important">
+	  
+		<section class="form-content" data-scroll-bar="250">			
+				<table class="table">
+					<tr>						
+						<th  class="orange">Installment No.</th>
+						<th class="orange">Membershhip No.</th>
+						<th class="orange">Member Name</th>
+						<th class="orange">Date</th>
+						<th class="orange">Draw Number</th>						
+					</tr>
+					<tr data-ng-repeat="trans in Model.DrawList | filter:Model.filter">
+						<!-- <td data-ng-bind="trans.customer_id"></td>
+						<td data-ng-bind="trans.name"></td> -->
+						<td data-ng-bind="trans.installment_number"></td>
+						<td data-ng-bind="trans.membership_number"></td>
+						<td data-ng-bind="trans.name"></td>
+						<td data-ng-bind="trans.winning_date| date:'dd/MMM/yyyy'"></td>						
+						<td data-ng-bind="trans.draw_number"></td>
+						
+					</tr>
+				</table>
+			</section>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default" data-ng-click="cancel()" data-dismiss="modal">Close</button>-->
+        <button type="button"  class="btn btn-warning" data-ng-click="save()">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,72 @@
+<section data-scroll-bar="350">
+	<form name="BackDatedCollectionsForm" class="form-content">
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Select Customer<span class="required">*</span></label>
+			</div>
+			<div class="span4">
+				<select data-ng-options="customer.id as customer.name for customer in Model.CustomerList" name="customer_id"
+						required=""  data-ng-model="Model.BackDatedCollection.CustomerId">
+			</select>				
+			<div class="error-messages" data-ng-show="Model.BackDatedCollection.CustomerId == 0 && BackDatedCollectionsForm.customer_id.$dirty" data-ng-bind="commonMediater.SelectCustomerErrorMessage"></div>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Select Installment Number<span class="required">*</span></label>
+			</div>
+			<div class="span4">
+				<select data-ng-change="Model.SetInstallmentAmount()" data-ng-model="Model.BackDatedCollection.InstallmentNumber"
+						data-ng-options="installment.InstallmentNumber as installment.Value for installment in Model.InstallmentDetails" name="installment_number" required=""  data-ng-model="Model.Collection.customer_id">
+				</select>
+				<div class="error-messages" data-ng-show="Model.BackDatedCollection.InstallmentNumber == 0 && BackDatedCollectionsForm.installment_number.$dirty" data-ng-bind="commonMediater.SelectInstallmentNumberErrorMessage"></div>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Select Paid Date<span class="required">*</span></label>
+			</div>
+			<div class="span4">
+				<div id="date" class="input-append" data-picker-mode="1"  data-datetime=""
+					 data-ng-model="Model.BackDatedCollection.PaidDate" required="">
+					<input data-format="dd-MM-yyyy" class=" span10" type="text" id="datepicker" name="datepicker" placeholder="Please select a date" disabled="disabled" />
+				  <span class="add-on" style="margin-top: 6px !important">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+				  </span>
+					<div class="error-messages" data-ng-show="AuditForm.datepicker.$error.required && AuditForm.datepicker.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Receipt Number</label>
+			</div>
+			<div class="span3">
+				<input type="text" class="span12" data-ng-model="Model.BackDatedCollection.ReceiptNumber"
+					   placeholder="Enter Receipt number"  name="receipt_number" />
+			</div>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="span4">
+				<label class="bold">Collected Amount<span class="required">*</span></label>
+			</div>
+			<div class="span3">
+				<input type="text" disabled="disabled" class="span12" placeholder="Enter collected amount"
+					   data-ng-model="Model.BackDatedCollection.PaidAmount" name="paid_amount" />
+			</div>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="offset4 span4 float-right margin-left-340">
+				<button class="btn btn-warning" data-ng-click="Model.SaveBackDatedCollection()"
+						data-ng-disabled="Model.BackDatedCollection.CustomerId == 0 || Model.BackDatedCollection.InstallmentNumber == 0 || BackDatedCollectionsForm.$invalid">Save Collection</button>
+				<button class="btn btn-normal" data-ng-click="Model.Clear()">Clear</button>
+			</div>			
+		</div>
+		
+	</form>
+</section>

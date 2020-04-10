@@ -1,0 +1,22 @@
+<div class="">
+  <div class="">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white !important;background-color:darkgoldenrod">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" data-ng-bind="Model.Title"></h4>
+      </div>
+      <div class="modal-body" style="color:black !important">        
+          <p>Once you click on Yes button details will be saved and you can not edit it later. </p>
+		  <p>Click Yes to save the details.</p>
+		  <p>Click No to modify details.</p>
+		  <div>
+			<button data-ng-click="save()" class="btn btn-warning">Yes</button>
+			<button data-ng-click="cancel()" class="btn btn-normal">No</button>
+		  </div>
+      </div>
+      <div class="modal-footer">       
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

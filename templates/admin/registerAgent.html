@@ -1,0 +1,60 @@
+<section>
+<h3> Agent Registration</h3>
+<form name="AgentRegForm" class="form-content">
+
+	<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Name<span class="required">*</span></label>
+	</div>
+	<div class="span3">
+		<input type="text" class="span12" placeholder="Enter agent name" required="" data-ng-model="Model.Agent.name" name="Name" data-ng-pattern="commonMediater.CharacterPattern">
+		 <div class="error-messages" data-ng-show="AgentRegForm.Name.$error.required && AgentRegForm.Name.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="AgentRegForm.Name.$error.pattern" class="error-messages" data-ng-bind="commonMediater.CharacterPatternErrorMessage" ></div>
+	</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Contact Number<span class="required">*</span></label>
+	</div>
+	<div class="span3">
+		<input type="text" class="span12" placeholder="Enter contact number" required="" data-ng-model="Model.Agent.contact_number" name="Contactnumber" data-ng-pattern="commonMediater.ContactNumberPattern">
+					<div class="error-messages" data-ng-show="AgentRegForm.Contactnumber.$error.required && AgentRegForm.Contactnumber.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="AgentRegForm.Contactnumber.$error.pattern" class="error-messages" data-ng-bind="commonMediater.ContactNumberPatternErrorMessage" ></div>
+	</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Address<span class="required">*</span></label>
+	</div>
+	<div class="span3">
+	<textarea rows="4" class="span12 margin-left-6" placeholder="Enter agent address" required="" data-ng-model="Model.Agent.address" name="Address"></textarea>		
+	<div class="error-messages" data-ng-show="AgentRegForm.Address.$error.required && AgentRegForm.Address.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+	</div>
+	</div>
+
+<div class="row-fluid">
+		<div class="span3">
+			<label class="bold">Upload photo</label>
+	</div>
+	<div class="span5">
+	<input type="file"  multiple onchange="angular.element(this).scope().Model.filesChanged(this)" />
+	 <!-- <button data-ng-click="Model.UploadPhoto()">upload</button> -->
+	</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="offset3 span4 margin-left-173">		
+		<button class="float-right btn btn-normal" data-ng-click="Model.Clear()">Clear</button>
+		<button class="float-right btn btn-warning" data-ng-click="Model.SaveAgentDetails()" data-ng-disabled="AgentRegForm.$invalid">Register</button>
+		<!-- <button class="float-right btn btn-normal" data-ng-click="Model.uploadagentList()">upload</button> -->
+		
+	</div>	
+	</div>
+	
+	  <div class="row-fluid">
+	  <span class="bold">Fields marked with <span class="required">*</span> are mandatory.</span>
+	  </div>
+</form>
+</section>

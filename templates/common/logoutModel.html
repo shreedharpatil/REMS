@@ -1,0 +1,18 @@
+<div class="">
+    <div class="">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white !important;background-color:darkgoldenrod">
+                <button type="button" class="close" data-dismiss="modal" data-ng-click="gooff()" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" data-ng-bind="Model.Title"></h4>
+            </div>
+            <div class="modal-body" style="color:black !important">
+                <p data-ng-bind="Model.Body"></p>
+                <div data-ng-show="Model.Options.IsProgressbarShown"><img src="../../images/02.gif" alt="no img found." style="height: 100px;width: 150px;margin-top: -11px;" /></div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-ng-click="cancel()" data-dismiss="modal">Close</button>-->
+                <button type="button" data-ng-show="Model.Options.IsOkButtonShown" class="btn btn-warning" data-ng-click="gooff()">Ok</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

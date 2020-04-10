@@ -1,0 +1,136 @@
+<section data-scroll-bar="1500" class="form-content" data-ng-show="CustomerBiodataTemplate.length == 0">
+<div class="row-fluid">
+	<div class=" span6">
+		<div class="span5" style="margin-left: 10px">
+			<h3>Customer Details</h3>
+		</div>
+	</div>
+	<div class=" span6 float-right">
+		<input type="text" class="span8" data-ng-model="Model.Filter"  placeholder="Filter by free text"/>
+		<span data-ng-click="Model.ToggleView('grid')" data-ng-show="Model.IsGridView">List View</span>
+		<span data-ng-click="Model.ToggleView('list')"  data-ng-show="!Model.IsGridView">Grid View</span>
+	</div>
+</div>
+
+<!-- grid view -->
+			<ul data-ng-show="Model.IsGridView" class="thumbnails" >
+		<li style="width: 290px" data-ng-repeat="customer in Model.CustomerList | filter:Model.Filter" class="grid-view-alignment"
+			data-ng-mouseover="Model.HideShow('zoomTool',true,$index)" data-ng-mouseout= "Model.HideShow('zoomTool',false,$index)">
+			<div class="thumbnail">
+				<img class="card_size" data-ng-src="{{customer.image_url}}" alt="">
+
+			<div class="caption customer_card" data-ng-click="Model.ShowCustomerBiodata(customer)">
+				<div class="row-fluid">
+					<div class="span7">
+						<span>Membership No.</span>
+					</div>
+					<div class="span5">
+						<span data-ng-bind="customer.id"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span7">
+						<span>Name</span>
+					</div>
+					<div class="span5">
+						<span data-ng-bind="customer.name"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span7">
+						<span>Contact Number</span>
+					</div>
+					<div class="span5">
+						<span data-ng-bind="customer.contact_number"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span7">
+						<span>Address</span>
+					</div>
+					<div class="span5">
+						<span data-ng-bind="customer.address"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="alignR zoomTool" data-ng-id="{{$index}}">
+						<a data-ng-click="Model.showDetails(customer)" href=""><span class="add-on"><i class="icon-eye-open"></i></span></a>
+						<a data-ng-click="Model.EditUser(customer)" href=""><span class="add-on"><i class="icon-pencil"></i></span></a>
+						<a data-ng-click="Model.DeleteUser(customer)" href=""><span class="add-on"><i class="icon-trash"></i></span></a>
+					</div>
+				</div>
+				<br class="clr">
+			</div>
+			</div>
+		</li>
+	</ul>
+	<!-- grid view -->
+
+	<!-- list view -->
+	<div data-ng-show="!Model.IsGridView" class="">
+		<article data-ng-repeat="customer in Model.CustomerList | filter:Model.Filter" class="list-view-alignment">
+		<div class="row-fluid well well-small ">
+			<div class="span3">
+				<img data-ng-src="{{customer.image_url}}" class="list-view-image-size" alt="">
+			</div>
+			<div class="span9 grid_card_size customer_card list-view-size" data-ng-click="Model.ShowCustomerBiodata(customer)"
+				 data-ng-mouseover="Model.HideShow('zoomToolModified',true,$index)" data-ng-mouseout= "Model.HideShow('zoomToolModified',false,$index)">
+				<div class="row-fluid">
+					<div class="span4">
+						<span>Membership No.</span>
+					</div>
+					<div class="span2">
+						<span data-ng-bind="customer.id"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<span>Name</span>
+					</div>
+					<div class="span3" data-ng-click="Model.showDetails(customer)">
+						<span data-ng-bind="customer.name"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<span>Contact Number</span>
+					</div>
+					<div class="span2">
+						<span data-ng-bind="customer.contact_number"></span>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<span>Address</span>
+					</div>
+					<div class="span3">
+						<span data-ng-bind="customer.address"></span>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="alignR zoomToolModified" data-ng-id="{{$index}}">
+						<a data-ng-click="Model.showDetails(customer)" href=""><span class="add-on"><i class="icon-eye-open"></i></span></a>
+						<a data-ng-click="Model.EditUser(customer)" href=""><span class="add-on"><i class="icon-pencil"></i></span></a>
+						<a data-ng-click="Model.DeleteUser(customer)" href=""><span class="add-on"><i class="icon-trash"></i></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		</article>
+		</div>
+	<!-- list view -->
+
+</section>
+
+<section id="customerBioData" style="background-color: #ffffff">
+	<div data-ng-include="CustomerBiodataTemplate"></div>
+</section>

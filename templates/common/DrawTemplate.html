@@ -1,0 +1,121 @@
+<section>
+<form class="form-content" name="DrawForm">
+	<div class="row-fluid">
+		<div class="span5" style="margin-left: 10px">
+			<h3 class="capitalize">Select {{Model.Draw.Type}} Winner.</h3>
+			<!--<a data-ng-bind="Model.Link" data-ng-click="Model.ViewDrawDetails()" href=""></a>-->
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<label>Select Installment Number<span class="required">*</span></label>
+		</div>
+		<div class="span4">
+			<select data-ng-options="member.key as member.value for member in Model.MembershipNumberList" name="installmentno"  data-ng-model="Model.Draw.InstallmentNumber">				
+		</select>
+		<div class="error-messages" data-ng-show="Model.Draw.InstallmentNumber == 0 && DrawForm.installmentno.$dirty" data-ng-bind="commonMediater.SelectMembershipNumberErrorMessage"></div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span4">
+			<label>Membership Number<span class="required">*</span></label>
+		</div>
+		<div class="span3">
+			<input type="text" data-ng-model="Model.Draw.MembershipNumber" name="MembershipNo" class="span12" 
+			placeholder="Enter Membership Number" required="" data-ng-pattern="commonMediater.NumberPattern" data-ng-blur="Model.ValidateMembershipNumber()"/>
+			<div class="error-messages" data-ng-show="DrawForm.MembershipNo.$error.required && DrawForm.MembershipNo.$dirty" data-ng-bind="commonMediater.MandatoryErrorMessage"></div>
+			 <div data-ng-show="DrawForm.MembershipNo.$error.pattern" class="error-messages" data-ng-bind="commonMediater.NumberPatternErrorMessage" ></div>
+			 <div data-ng-show="!Model.IsMembershipNumberExists" class="error-messages" data-ng-bind="commonMediater.MembershipNumberDoesnotExistsErrorMessage" ></div>
+			 
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span4">
+			<label> Draw Number</label>
+		</div>
+		<div class="span3">
+			<input type="text" data-ng-model="Model.Draw.DrawNumber" class="span12"  placeholder="Enter Draw Number"/>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span4 margin-left-252">
+			<button data-ng-click="Model.Clear()" class="btn btn-normal float-right">Clear</button>
+			<button data-ng-click="Model.Save()"  class="btn btn-warning float-right" data-ng-disabled="DrawForm.$invalid || Model.Draw.InstallmentNumber == 0 || !Model.IsMembershipNumberExists">Save</button>
+			
+		</div>
+	</div>
+</form>
+<article id="draw_details" class="form-content">
+	<div class="row-fluid">
+		<div class=" span7">
+			<div class="span6" style="margin-left: 10px">
+				<h3 class="capitalize">{{Model.Draw.Type}} Winner Details.</h3>
+			</div>
+		</div>
+		<div class=" span5">
+			<input type="text" class="span11  float-right" data-ng-model="Model.filter"  placeholder="Filter by free text"/>
+		</div>
+	</div>
+
+	<div data-scroll-bar="1000" style="  background: #F3F2F2;">
+		<ul class="thumbnails" >
+			<li style="width: 290px" data-ng-repeat="draw in Model.DrawList | filter:Model.filter" class="grid-view-alignment">
+				<div class="thumbnail">
+					<img class="card_size" data-ng-src="{{draw.image_url}}" alt="">
+					<div class="caption customer_card">
+						<div class="row-fluid">
+							<div class="span7">
+								<span>Installment No.</span>
+							</div>
+							<div class="span5">
+								<span class="margin-top-0" data-ng-bind="draw.installment_number"></span>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="span7">
+								<span>Membershhip No.</span>
+							</div>
+							<div class="span5">
+								<span data-ng-bind="draw.membership_number"></span>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="span7">
+								<span>Member Name</span>
+							</div>
+							<div class="span5">
+								<span data-ng-bind="draw.name"></span>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="span7">
+								<span>Won Date</span>
+							</div>
+							<div class="span5">
+								<span data-ng-bind="draw.winning_date| date:'dd/MMM/yyyy'"></span>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="span7">
+								<span>Draw Number</span>
+							</div>
+							<div class="span5">
+								<span data-ng-bind="draw.draw_number"></span>
+							</div>
+						</div>
+
+						<br class="clr">
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</article>
+</section>
